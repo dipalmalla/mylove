@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Love You 🌹</title>
+<style>
+    body{
+        margin:0;
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+        overflow:hidden;
+        font-family:Arial, sans-serif;
+    }
+
+    .container{
+        text-align:center;
+        animation: fadeIn 2s ease;
+    }
+
+    .rose{
+        font-size:120px;
+        animation: float 2s infinite ease-in-out;
+    }
+
+    h1{
+        color:#b3003c;
+        font-size:52px;
+        margin-top:10px;
+        text-shadow:2px 2px 8px rgba(255,255,255,0.8);
+    }
+
+    p{
+        color:#5a0020;
+        font-size:22px;
+    }
+
+    @keyframes float{
+        0%,100%{transform:translateY(0);}
+        50%{transform:translateY(-15px);}
+    }
+
+    @keyframes fadeIn{
+        from{opacity:0; transform:scale(0.8);}
+        to{opacity:1; transform:scale(1);}
+    }
+
+    .hearts{
+        position:absolute;
+        width:100%;
+        height:100%;
+        overflow:hidden;
+        top:0;
+        left:0;
+        pointer-events:none;
+    }
+
+    .heart{
+        position:absolute;
+        color:red;
+        animation: rise 6s linear infinite;
+        font-size:24px;
+        opacity:0.7;
+    }
+
+    @keyframes rise{
+        from{
+            transform:translateY(100vh) scale(0.5);
+            opacity:0;
+        }
+        to{
+            transform:translateY(-10vh) scale(1.5);
+            opacity:1;
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="hearts">
+    <div class="heart" style="left:10%; animation-delay:0s;">❤</div>
+    <div class="heart" style="left:25%; animation-delay:2s;">❤</div>
+    <div class="heart" style="left:40%; animation-delay:4s;">❤</div>
+    <div class="heart" style="left:60%; animation-delay:1s;">❤</div>
+    <div class="heart" style="left:75%; animation-delay:3s;">❤</div>
+    <div class="heart" style="left:90%; animation-delay:5s;">❤</div>
+</div>
+
+<div class="container">
+    <div class="rose">🌹</div>
+    <h1>I Love You</h1>
+    <p>You are special ❤️</p>
+</div>
+
+</body>
+</html>
