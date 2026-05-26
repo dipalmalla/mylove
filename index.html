@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Good Night ❤️</title>
+<title>Love Greeting ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -18,12 +19,88 @@ body{
     overflow:hidden;
     height:100vh;
     font-family:'Poppins',sans-serif;
-    background:linear-gradient(180deg,#020617,#0f172a,#1e293b);
     display:flex;
     justify-content:center;
     align-items:center;
-    color:white;
     position:relative;
+    transition:background 2s ease;
+}
+
+/* Animated gradient background */
+body::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.12), transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(255,192,203,0.15), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(255,255,255,0.08), transparent 30%);
+    animation:moveBg 20s linear infinite;
+}
+
+@keyframes moveBg{
+    0%{
+        transform:translate(0,0);
+    }
+    50%{
+        transform:translate(-10%,-10%);
+    }
+    100%{
+        transform:translate(0,0);
+    }
+}
+
+/* Sun / Moon */
+.skyObject{
+    position:absolute;
+    top:60px;
+    right:80px;
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    z-index:2;
+    transition:all 1s ease;
+}
+
+/* Clouds */
+.cloud{
+    position:absolute;
+    background:rgba(255,255,255,0.75);
+    border-radius:50px;
+    opacity:0.8;
+    animation:floatCloud linear infinite;
+}
+
+.cloud::before,
+.cloud::after{
+    content:"";
+    position:absolute;
+    background:inherit;
+    border-radius:50%;
+}
+
+.cloud::before{
+    width:60px;
+    height:60px;
+    top:-25px;
+    left:10px;
+}
+
+.cloud::after{
+    width:80px;
+    height:80px;
+    top:-35px;
+    right:10px;
+}
+
+@keyframes floatCloud{
+    from{
+        transform:translateX(-200px);
+    }
+    to{
+        transform:translateX(120vw);
+    }
 }
 
 /* Stars */
@@ -39,51 +116,27 @@ body{
     to{opacity:1;}
 }
 
-/* Moon */
-.moon{
-    position:absolute;
-    top:60px;
-    right:80px;
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:#fff7cc;
-    box-shadow:
-        0 0 30px #fff7cc,
-        0 0 80px #fff7cc;
-}
-
-.moon::after{
-    content:"";
-    position:absolute;
-    width:110px;
-    height:110px;
-    background:#0f172a;
-    border-radius:50%;
-    top:5px;
-    left:30px;
-}
-
-/* Main card */
+/* Card */
 .card{
     position:relative;
     z-index:5;
-    text-align:center;
-    padding:40px;
     width:90%;
-    max-width:700px;
-    border-radius:30px;
-    backdrop-filter:blur(15px);
-    background:rgba(255,255,255,0.08);
+    max-width:750px;
+    padding:45px;
+    text-align:center;
+    border-radius:35px;
+    backdrop-filter:blur(20px);
+    background:rgba(255,255,255,0.1);
     border:1px solid rgba(255,255,255,0.15);
-    box-shadow:0 0 30px rgba(255,255,255,0.1);
-    animation:fadeIn 2s ease;
+    box-shadow:0 0 35px rgba(255,255,255,0.15);
+    color:white;
+    animation:fadeIn 1.8s ease;
 }
 
 @keyframes fadeIn{
     from{
         opacity:0;
-        transform:translateY(30px);
+        transform:translateY(40px);
     }
     to{
         opacity:1;
@@ -93,8 +146,7 @@ body{
 
 h1{
     font-size:4rem;
-    color:#ff4d6d;
-    text-shadow:0 0 20px #ff4d6d;
+    margin-bottom:15px;
     animation:pulse 2s infinite;
 }
 
@@ -103,13 +155,17 @@ h1{
         transform:scale(1);
     }
     50%{
-        transform:scale(1.06);
+        transform:scale(1.05);
     }
 }
 
+.subtitle{
+    font-size:1.7rem;
+    margin-bottom:20px;
+}
+
 .message{
-    margin-top:20px;
-    font-size:1.5rem;
+    font-size:1.3rem;
     line-height:1.8;
     min-height:80px;
 }
@@ -124,23 +180,23 @@ h1{
 }
 
 button{
-    padding:14px 28px;
     border:none;
+    padding:14px 28px;
     border-radius:50px;
-    cursor:pointer;
     font-size:1rem;
     font-weight:600;
+    cursor:pointer;
     transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.08);
 }
 
 .loveBtn{
     background:#ff4d6d;
     color:white;
-    box-shadow:0 0 15px #ff4d6d;
-}
-
-.loveBtn:hover{
-    transform:scale(1.08);
+    box-shadow:0 0 20px #ff4d6d;
 }
 
 .hugBtn{
@@ -148,20 +204,15 @@ button{
     color:#111827;
 }
 
-.hugBtn:hover{
-    transform:scale(1.08);
-}
-
 /* Floating hearts */
 .heart{
     position:absolute;
     bottom:-50px;
-    animation:float linear forwards;
-    user-select:none;
+    animation:floatHeart linear forwards;
     pointer-events:none;
 }
 
-@keyframes float{
+@keyframes floatHeart{
     0%{
         transform:translateY(0) rotate(0deg);
         opacity:1;
@@ -176,38 +227,55 @@ button{
 .popup{
     position:absolute;
     bottom:40px;
-    background:rgba(255,255,255,0.12);
-    padding:15px 25px;
+    padding:14px 24px;
     border-radius:20px;
+    background:rgba(255,255,255,0.12);
     backdrop-filter:blur(10px);
+    color:white;
     opacity:0;
     transition:0.5s;
-    z-index:10;
+    z-index:20;
 }
 
 .show{
     opacity:1;
 }
 
-/* Mobile */
+/* Responsive */
 @media(max-width:600px){
+
     h1{
-        font-size:2.5rem;
+        font-size:2.6rem;
+    }
+
+    .subtitle{
+        font-size:1.2rem;
     }
 
     .message{
-        font-size:1.1rem;
+        font-size:1rem;
     }
+
+    .skyObject{
+        width:80px;
+        height:80px;
+        top:40px;
+        right:30px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<div class="moon"></div>
+<div class="skyObject" id="skyObject"></div>
 
 <div class="card">
-    <h1>❤️ I Love You ❤️</h1>
+    <h1 id="title">❤️ I Love You ❤️</h1>
+
+    <div class="subtitle" id="subtitle"></div>
 
     <div class="message" id="typingText"></div>
 
@@ -217,57 +285,173 @@ button{
     </div>
 </div>
 
-<div class="popup" id="popup">You are special ✨</div>
+<div class="popup" id="popup">✨</div>
 
 <script>
 
+/* Time based settings */
+
+const hour = new Date().getHours();
+
+let greeting = "";
+let message = "";
+let bg = "";
+let skyStyle = "";
+let subtitle = "";
+let starsNeeded = false;
+
+const skyObject = document.getElementById("skyObject");
+
+if(hour >= 5 && hour < 12){
+
+    greeting = "☀️ Good Morning ❤️";
+    subtitle = "Rise and shine beautiful ✨";
+    message = "May your day begin with smiles, happiness, love and endless positivity 💛";
+    bg = "linear-gradient(180deg,#87CEEB,#FFD580,#FFB6C1)";
+    skyStyle = `
+        background: radial-gradient(circle at 30% 30%, #fff7b0, #FFD700);
+        box-shadow:0 0 50px #FFD700;
+    `;
+
+}
+else if(hour >= 12 && hour < 17){
+
+    greeting = "🌤️ Good Afternoon ❤️";
+    subtitle = "Hope your day is going amazing ☁️";
+    message = "Sending you energy, positivity and lots of love for the rest of your day 💖";
+    bg = "linear-gradient(180deg,#4facfe,#00f2fe,#fbc2eb)";
+    skyStyle = `
+        background: radial-gradient(circle at 30% 30%, #fff5a5, #ffb703);
+        box-shadow:0 0 45px #ffb703;
+    `;
+
+}
+else if(hour >= 17 && hour < 20){
+
+    greeting = "🌇 Good Evening ❤️";
+    subtitle = "A beautiful sunset for a beautiful person ✨";
+    message = "Relax and enjoy this peaceful evening filled with warmth and happiness 🧡";
+    bg = "linear-gradient(180deg,#ff9966,#ff5e62,#2c3e50)";
+    skyStyle = `
+        background: radial-gradient(circle at 30% 30%, #ffdd99, #ff7b54);
+        box-shadow:0 0 40px #ff9966;
+    `;
+
+}
+else{
+
+    greeting = "🌙 Good Night ❤️";
+    subtitle = "Sweet dreams and endless love ✨";
+    message = "May your dreams be filled with happiness, peace and beautiful moments ❤️";
+    bg = "linear-gradient(180deg,#020617,#0f172a,#1e293b)";
+    skyStyle = `
+        background:#fff7cc;
+        box-shadow:0 0 40px #fff7cc,0 0 80px #fff7cc;
+    `;
+    starsNeeded = true;
+
+    skyObject.innerHTML = `
+        <div style="
+            position:absolute;
+            width:100%;
+            height:100%;
+            background:#0f172a;
+            border-radius:50%;
+            top:5px;
+            left:30px;
+        "></div>
+    `;
+}
+
+document.body.style.background = bg;
+skyObject.style.cssText += skyStyle;
+
+document.getElementById("title").innerHTML = greeting;
+document.getElementById("subtitle").innerHTML = subtitle;
+
 /* Typing effect */
-const text =
-"Good Night 🌙✨\nMay your dreams be filled with happiness, love, and endless smiles ❤️";
 
 let i = 0;
 
 function typeWriter(){
-    if(i < text.length){
+
+    if(i < message.length){
+
         document.getElementById("typingText").innerHTML +=
-            text.charAt(i) === "\n" ? "<br>" : text.charAt(i);
+            message.charAt(i);
 
         i++;
-        setTimeout(typeWriter, 45);
+
+        setTimeout(typeWriter,40);
     }
 }
 
 typeWriter();
 
 /* Stars */
-for(let i=0;i<120;i++){
-    const star = document.createElement("div");
-    star.classList.add("star");
 
-    let size = Math.random()*3;
+if(starsNeeded){
 
-    star.style.width = size + "px";
-    star.style.height = size + "px";
+    for(let i=0;i<120;i++){
 
-    star.style.left = Math.random()*100 + "vw";
-    star.style.top = Math.random()*100 + "vh";
+        const star = document.createElement("div");
 
-    star.style.animationDuration = (1 + Math.random()*4) + "s";
+        star.classList.add("star");
 
-    document.body.appendChild(star);
+        let size = Math.random()*3;
+
+        star.style.width = size + "px";
+        star.style.height = size + "px";
+
+        star.style.left = Math.random()*100 + "vw";
+        star.style.top = Math.random()*100 + "vh";
+
+        star.style.animationDuration = (1 + Math.random()*4) + "s";
+
+        document.body.appendChild(star);
+    }
+}
+
+/* Clouds */
+
+for(let i=0;i<6;i++){
+
+    const cloud = document.createElement("div");
+
+    cloud.classList.add("cloud");
+
+    cloud.style.width = (120 + Math.random()*120) + "px";
+    cloud.style.height = (50 + Math.random()*30) + "px";
+
+    cloud.style.top = Math.random()*60 + "vh";
+
+    cloud.style.animationDuration = (30 + Math.random()*30) + "s";
+
+    cloud.style.opacity = 0.3 + Math.random()*0.5;
+
+    document.body.appendChild(cloud);
 }
 
 /* Floating hearts */
+
 function createHeart(x = Math.random()*window.innerWidth){
+
     const heart = document.createElement("div");
+
     heart.classList.add("heart");
 
     const emojis = ["❤️","💖","💕","💘","💞"];
-    heart.innerHTML = emojis[Math.floor(Math.random()*emojis.length)];
+
+    heart.innerHTML =
+        emojis[Math.floor(Math.random()*emojis.length)];
 
     heart.style.left = x + "px";
-    heart.style.fontSize = (20 + Math.random()*35) + "px";
-    heart.style.animationDuration = (4 + Math.random()*5) + "s";
+
+    heart.style.fontSize =
+        (20 + Math.random()*35) + "px";
+
+    heart.style.animationDuration =
+        (4 + Math.random()*5) + "s";
 
     document.body.appendChild(heart);
 
@@ -276,29 +460,38 @@ function createHeart(x = Math.random()*window.innerWidth){
     },9000);
 }
 
-setInterval(createHeart, 350);
+setInterval(createHeart,350);
 
-/* Love button */
+/* Buttons */
+
 function sendLove(){
+
     for(let i=0;i<25;i++){
+
         setTimeout(()=>{
-            createHeart(window.innerWidth/2 + (Math.random()*300 - 150));
-        },i*80);
+            createHeart(
+                window.innerWidth/2 +
+                (Math.random()*300 - 150)
+            );
+        },i*70);
     }
 
     showPopup("Love sent successfully 💌");
 }
 
-/* Hug button */
 function virtualHug(){
+
     showPopup("Sending warm virtual hugs 🤗❤️");
 }
 
 /* Popup */
-function showPopup(message){
+
+function showPopup(text){
+
     const popup = document.getElementById("popup");
 
-    popup.innerHTML = message;
+    popup.innerHTML = text;
+
     popup.classList.add("show");
 
     setTimeout(()=>{
@@ -306,12 +499,20 @@ function showPopup(message){
     },2500);
 }
 
-/* Click anywhere for hearts */
+/* Click hearts */
+
 document.addEventListener("click",(e)=>{
+
     for(let i=0;i<8;i++){
+
         setTimeout(()=>{
-            createHeart(e.clientX + Math.random()*100 - 50);
-        },i*50);
+
+            createHeart(
+                e.clientX +
+                Math.random()*100 - 50
+            );
+
+        },i*40);
     }
 });
 
